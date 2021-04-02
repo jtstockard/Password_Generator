@@ -5,6 +5,7 @@ var confirmSpecial;
 var confirmNumeric;
 var confirmUpper;
 var confirmLower;
+var setsOfChar;
 var generateBtn = document.querySelector("#generate");
 var specialChars = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+"];
 var numericValue = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
@@ -86,6 +87,48 @@ function generatePassword() {
       confirmUpper = confirm("Will this password have uppercase letters?");
       confirmNumeric = confirm("Will this password have numbers?");
       confirmSpecial = confirm("Will this password have special characters?");
+    }
+    //0 types
+    if (!confirmLower && !confirmUpper && !confirmNumeric && !confirmSpecial) {
+      setsOfChar = alert("Please choose at least one type of chrarcter.");
+    }
+    // 4 types
+    else if (confirmLower && confirmUpper && confirmNumeric && confirmSpecial) {
+      setsOfChar = lowercaseLetters.concat(uppercaseLetters, numericValue, specialChars);
+    }
+    //3 types
+    else if (confirmLower && confirmUpper && confirmNumeric) {
+      setsOfChar = lowercaseLetters.concat(uppercaseLetters, numericValue);
+    } else if (confirmLower && confirmUpper && confirmSpecial) {
+      setsOfChar = lowercaseLetters.concat(uppercaseLetters, specialChars);
+    } else if (confirmLower && confirmNumeric && confirmSpecial) {
+      setsOfChar = lowercaseLetters.concat(numericValue, specialChars);
+    } else if (confirmUpper && confirmNumeric && confirmSpecial) {
+      setsOfChar = uppercaseLetters.concat(numericValue, specialChars);
+    }
+    //2 types
+    else if (confirmLower && confirmUpper) {
+      setsOfChar = lowercaseLetters.concat(uppercaseLetters);
+    } else if (confirmLower && confirmNumeric) {
+      setsOfChar = lowercaseLetters.concat(numericValue);
+    } else if (confirmLower && confirmSpecial) {
+      setsOfChar = lowercaseLetters.concat(specialChars);
+    } else if (confirmUpper && confirmNumeric) {
+      setsOfChar = uppercaseLetters.concat(numericValue);
+    } else if (confirmUpper && confirmSpecial) {
+      setsOfChar = uppercaseLetters.concat(specialChars);
+    } else if (confirmNumeric && confirmSpecial) {
+      setsOfChar = numericValue.concat(specialChars);
+    }
+    // 1 type
+    else if (confirmLower) {
+      setsOfChar = lowercaseLetters;
+    } else if (confirmUpper) {
+      setsOfChar = uppercaseLetters;
+    } else if (confirmNumeric) {
+      setsOfChar = numericValue;
+    } else if (confirmSpecial) {
+      setsOfChar = specialChars;
     }
   }
 
