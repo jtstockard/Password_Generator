@@ -1,14 +1,48 @@
-// Assignment Code
+//Global variables
 var start;
-var password = "";
+var password = [];
 var confirmSpecial;
 var confirmNumeric;
 var confirmUpper;
 var confirmLower;
 var setsOfChar;
 var generateBtn = document.querySelector("#generate");
-var specialChars = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+"];
-var numericValue = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+//all character values
+var specialChars = [
+  "!",
+  '"',
+  "#",
+  "$",
+  "%",
+  "&",
+  "'",
+  "(",
+  ")",
+  "*",
+  "+",
+  ",",
+  "-",
+  ".",
+  "/",
+  ":",
+  ";",
+  "<",
+  "=",
+  ">",
+  "?",
+  "@",
+  "[",
+  "\\",
+  "]",
+  "^",
+  "_",
+  "`",
+  "{",
+  "|",
+  "}",
+  "~",
+];
+var numericValue = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 var lowercaseLetters = [
   "a",
   "b",
@@ -70,19 +104,25 @@ var uppercaseLetters = [
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 }
+// Stores click event to create passwrod
 generateBtn.addEventListener("click", writePassword);
-//TODO: CODE HERE
+
 function generatePassword() {
+  // Character limit prompt
   var start = parseInt(
     prompt("How many characters would you like in your password? Min: 8, Max: 128")
   );
   {
+    // If no value is selected
     if (!start) {
       alert("Please enter your desired number first.");
+      //this "or" statement validates the pw length
     } else if (start < 8 || start > 128) {
-      start = parseInt(prompt("Please choose a number between 8 and 128 characters."));
+      start = parseInt(alert("Please choose a number between 8 and 128 characters."));
     } else {
+      //confirms for pw character types
       confirmLower = confirm("Will this password have lowercase letters?");
       confirmUpper = confirm("Will this password have uppercase letters?");
       confirmNumeric = confirm("Will this password have numbers?");
@@ -92,7 +132,7 @@ function generatePassword() {
     if (!confirmLower && !confirmUpper && !confirmNumeric && !confirmSpecial) {
       setsOfChar = alert("Please choose at least one type of chrarcter.");
     }
-    // 4 types
+    //4 types
     else if (confirmLower && confirmUpper && confirmNumeric && confirmSpecial) {
       setsOfChar = lowercaseLetters.concat(uppercaseLetters, numericValue, specialChars);
     }
@@ -131,33 +171,12 @@ function generatePassword() {
       setsOfChar = specialChars;
     }
   }
-
-  passwordText.value = password;
-
-  function getSpecialChars() {
-    for (var i = 0; i < specialChars.length; i++) {
-      return getSpecialChars;
-    }
+  //Math for loop for the pw
+  for (var i = 0; i < start; i++) {
+    var chosenSets = setsOfChar[Math.floor(Math.random() * setsOfChar.length)];
+    password.push(chosenSets);
   }
-  function getNumericValue() {
-    for (var i = 0; i < numericValue.length; i++) {
-      return getNumericValue;
-    }
-  }
-  function getUppercaseLetters() {
-    for (var i = 0; i < uppercaseLetters.length; i++) {
-      return getUppercaseLetters;
-    }
-  }
-  function getLowercaseLetters() {
-    for (var i = 0; i < lowercaseLetters.length; i++) {
-      return getLowercaseLetters;
-    }
-  }
-  return password;
-
-  // Add event listener to generate button
-
-  //ask for password length
-  //validate pw responce
+  //added a join method to add the arrays into one complete string
+  var finish = password.join([]);
+  return finish;
 }
