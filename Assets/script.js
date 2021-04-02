@@ -1,5 +1,6 @@
 // Assignment Code
 var start;
+var password = "";
 var confirmSpecial;
 var confirmNumeric;
 var confirmUpper;
@@ -68,13 +69,15 @@ var uppercaseLetters = [
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  //TODO: CODE HERE
-  function generatePassword() {}
+}
+generateBtn.addEventListener("click", writePassword);
+//TODO: CODE HERE
+function generatePassword() {
   var start = parseInt(
     prompt("How many characters would you like in your password? Min: 8, Max: 128")
   );
   {
-    if (!enter) {
+    if (!start) {
       alert("Please enter your desired number first.");
     } else if (start < 8 || start > 128) {
       start = parseInt(prompt("Please choose a number between 8 and 128 characters."));
@@ -84,11 +87,9 @@ function writePassword() {
       confirmNumeric = confirm("Will this password have numbers?");
       confirmSpecial = confirm("Will this password have special characters?");
     }
-
-    var password = "";
-
-    passwordText.value = password;
   }
+
+  passwordText.value = password;
 
   function getSpecialChars() {
     for (var i = 0; i < specialChars.length; i++) {
@@ -110,14 +111,10 @@ function writePassword() {
       return getLowercaseLetters;
     }
   }
+  return password;
 
   // Add event listener to generate button
-  generateBtn.addEventListener("click", writePassword);
 
   //ask for password length
   //validate pw responce
-
-  //
-
-  return password;
 }
