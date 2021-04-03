@@ -1,104 +1,4 @@
-//Global variables
-var start;
-var password = [];
-var confirmSpecial;
-var confirmNumeric;
-var confirmUpper;
-var confirmLower;
-var setsOfChar;
 var generateBtn = document.querySelector("#generate");
-//all character values
-var specialChars = [
-  "!",
-  '"',
-  "#",
-  "$",
-  "%",
-  "&",
-  "'",
-  "(",
-  ")",
-  "*",
-  "+",
-  ",",
-  "-",
-  ".",
-  "/",
-  ":",
-  ";",
-  "<",
-  "=",
-  ">",
-  "?",
-  "@",
-  "[",
-  "\\",
-  "]",
-  "^",
-  "_",
-  "`",
-  "{",
-  "|",
-  "}",
-  "~",
-];
-var numericValue = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-var lowercaseLetters = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "P",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
-var uppercaseLetters = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
 
 // Write password to the #password input
 function writePassword() {
@@ -110,6 +10,106 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
+  var password = [];
+  //all character values
+  var specialChars = [
+    "!",
+    '"',
+    "#",
+    "$",
+    "%",
+    "&",
+    "'",
+    "(",
+    ")",
+    "*",
+    "+",
+    ",",
+    "-",
+    ".",
+    "/",
+    ":",
+    ";",
+    "<",
+    "=",
+    ">",
+    "?",
+    "@",
+    "[",
+    "\\",
+    "]",
+    "^",
+    "_",
+    "`",
+    "{",
+    "|",
+    "}",
+    "~",
+  ];
+  var numericValue = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  var lowercaseLetters = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "P",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
+  var uppercaseLetters = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
+  //
+  var start;
+  var confirmSpecial;
+  var confirmNumeric;
+  var confirmUpper;
+  var confirmLower;
+  var setsOfChar;
   // Character limit prompt
   var start = parseInt(
     prompt("How many characters would you like in your password? Min: 8, Max: 128")
@@ -120,7 +120,7 @@ function generatePassword() {
       alert("Please enter your desired number first.");
       //this "or" statement validates the pw length
     } else if (start < 8 || start > 128) {
-      start = parseInt(alert("Please choose a number between 8 and 128 characters."));
+      start = alert("Please choose a number between 8 and 128 characters.");
     } else {
       //confirms for pw character types
       confirmLower = confirm("Will this password have lowercase letters?");
@@ -177,6 +177,5 @@ function generatePassword() {
     password.push(chosenSets);
   }
   //added a join method to add the arrays into one complete string
-  var finish = password.join([]);
-  return finish;
+  return password.join("");
 }
