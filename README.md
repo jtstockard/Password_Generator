@@ -25,7 +25,7 @@
 
 ## Usage
 
-[Example gif](Assets/ps_example.gif)
+[Example gif](Assets/images/ps_example.gif)
 
 ## Credits
 
